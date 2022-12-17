@@ -1,0 +1,4 @@
+﻿  DepthCamera.cpp
+C:\REPOSTORIES\Point-Cloud-Proccesing\PointCloudProcessing\DepthCamera.cpp(43,23): error C2664: 'void PointCloud::setpointNumber(int)': cannot convert argument 1 from 'Point' to 'int'
+C:\REPOSTORIES\Point-Cloud-Proccesing\PointCloudProcessing\DepthCamera.cpp(43,22): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\REPOSTORIES\Point-Cloud-Proccesing\PointCloudProcessing\PointCloud.h(14,7): message : see declaration of 'PointCloud::setpointNumber'

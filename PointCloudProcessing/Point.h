@@ -5,7 +5,7 @@ private:
 	double x, y, z;
 public:
 	
-	Point(double, double, double);
+	Point();
 
 	void setX(double x);
 	double getX() const;

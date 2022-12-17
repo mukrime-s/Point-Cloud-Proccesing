@@ -5,7 +5,12 @@
 using namespace std;
 //Constructor fonksiyonu
 
-Point::Point(double a = 0, double b = 0, double c = 0) :x(a), y(b), z(c) {};
+Point::Point()
+{
+	x = 0;
+	y = 0;
+	z = 0;
+}
 
 //Bu fonk. point sýnýfý içindeki x deðiþkenine atama iþlemi yapar.
 void Point::setX(double x) {
