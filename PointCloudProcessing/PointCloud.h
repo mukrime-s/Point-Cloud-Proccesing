@@ -1,29 +1,30 @@
 #pragma once
 #include "Point.h"
 using namespace std;
-
-
-class PointCloud
+class PointCloud:public Point
 {
 private:
+	Point* points;
 	int pointNumber;
-
-
 public:
 	PointCloud();
-	void setpointNumber(int
-	
-	
-	
-	
-	);
-	int getpointNumber() const;
+	PointCloud(int);//Dizinin boyutu, nesne yaratýlýrken constructor fonksiyonunda bir parametre olarak alýnýr.
+	//Point sýnýfýndan setPoint fonksiyonlarý alýndý
+	void setPointX(int, double);
+	void setPointY(int, double);
+	void setPointZ(int, double);
+	void setPointNumber(int); //point cloudun icindeki pointleri point objesi kullanarak setleyen foksiyon olusturuldu.
+	void setPoint(int, Point); // point classýndaki indexi pointin indexine esitler.
+	//Point sýnýfýndan getPoint fonksiyonlarý alýndý sabit kalmasý için const kullanýldý.
+	const double getPointX(int);
+	const double getPointY(int);
+	const double getPointZ(int);
+	Point getPoint(int);////point cloudun icindeki pointleri point objesi kullanarak objeye erisen foksiyon olusturuldu.
+	const int getPointNumber();//pointNumberi döndürür.
+	const PointCloud operator+(const PointCloud&); //iki nokta bulutunun sahip olduðu noktalara sahip tek bir nokta bulutunu döndürür.
+	const PointCloud operator=(const PointCloud&); //bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
 
-
-
-	PointCloud operator+(PointCloud Pc);
-	void operator=(PointCloud* Pc);
-
+	PointCloud deleteMovePoint(int);//secilen pointi listeden siler ve silinen pointten sonraki degerleri bir öncekine tasir.
 
 };
 
