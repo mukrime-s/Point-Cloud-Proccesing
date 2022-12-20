@@ -35,11 +35,23 @@ PointCloud DepthCamera::capture()
 		while (!dataFile.eof())
 		{
 			dataFile >> corNumber;
-			P.setX(corNumber);
+
+			if (floor(corNumber) != ceil(corNumber)) {
+
+				P.setX(corNumber);
+			}
+			
 			dataFile >> corNumber;
-			P.setY(corNumber);
+			if (floor(corNumber) != ceil(corNumber)) {
+
+				P.setY(corNumber);
+			}
+			
 			dataFile >> corNumber;
-			P.setZ(corNumber);
+			if (floor(corNumber) != ceil(corNumber)) {
+
+				P.setZ(corNumber);
+			}
 			PC.setPoint(counter,P);
 			counter++;
 		}
