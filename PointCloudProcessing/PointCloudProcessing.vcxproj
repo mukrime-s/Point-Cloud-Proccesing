@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthCamera.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="DepthCameraTest.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointCloud.cpp" />
     <ClCompile Include="PointCloudRecorder.cpp" />

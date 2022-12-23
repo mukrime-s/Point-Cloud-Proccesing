@@ -7,9 +7,7 @@ using namespace std;
 
 Point::Point()
 {
-	x = 0;
-	y = 0;
-	z = 0;
+
 }
 
 //Bu fonk. point sýnýfý içindeki x deðiþkenine atama iþlemi yapar.
@@ -46,7 +44,7 @@ bool Point::operator==(const Point& other) const {
 }
 
 //Bu fonk iki adet Pointin birbirine uzaklýðýný hesaplar ve döndürür.
-const double Point::distance(const Point& q)  {
+const double Point::distance(const Point& q) {
 
 	return sqrt(pow((this->x - q.x), 2) + pow((this->y - q.y), 2) + pow((this->z - q.z), 2));
 }

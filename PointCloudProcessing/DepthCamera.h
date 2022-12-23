@@ -11,6 +11,7 @@ class DepthCamera
 private:
 	string fileName;
 public:
+	int counter = 0;
 	
 	DepthCamera();
 	

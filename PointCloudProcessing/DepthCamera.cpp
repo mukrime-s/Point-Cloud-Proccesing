@@ -1,4 +1,5 @@
 #include "DepthCamera.h"
+#include<iostream>
 
 using namespace std;
 
@@ -8,23 +9,23 @@ DepthCamera::DepthCamera()
 }
 
 //bu fonksiyon fileName deðiskenine atama yapmamizi saglar.
-void DepthCamera::setfileName(string fileName) 
+void DepthCamera::setfileName(string fileName)
 {
 	this->fileName = fileName;
 }
 
-string DepthCamera::getfileName() const 
+string DepthCamera::getfileName() const
 {
 	return this->fileName;
 }
 
-PointCloud DepthCamera::capture() 
+PointCloud DepthCamera::capture()
 {
 	ifstream dataFile;
 	Point P;
 	PointCloud PC;
-	int counter = 0;
 	double corNumber;
+
 
 	dataFile.open(fileName, std::ifstream::in);
 	if (!dataFile) {
@@ -36,27 +37,35 @@ PointCloud DepthCamera::capture()
 		{
 			dataFile >> corNumber;
 
-			if (floor(corNumber) != ceil(corNumber)) {
+			if (corNumber != (int)corNumber) {
 
 				P.setX(corNumber);
+
 			}
-			
+
 			dataFile >> corNumber;
-			if (floor(corNumber) != ceil(corNumber)) {
+			if (corNumber != (int)corNumber) {
 
 				P.setY(corNumber);
+
 			}
-			
+
 			dataFile >> corNumber;
-			if (floor(corNumber) != ceil(corNumber)) {
+			if (corNumber != (int)corNumber) {
 
 				P.setZ(corNumber);
-			}
-			PC.setPoint(counter,P);
-			counter++;
-		}
-		return PC;
-	}
 
+			}
+			if (corNumber != (int)corNumber) {
+				PC.setPoint(counter, P);
+				counter++;
+				PC.setPointNumber(counter + 1);
+			}
+		}
+
+		return PC;
+		dataFile.close();
+	}
 }
+
 
