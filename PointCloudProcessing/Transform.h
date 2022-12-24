@@ -7,7 +7,7 @@ class Transform
 {
 private:
     
-     double angles[3];
+    double angles[3];
     double trans[3];
     double transMatrix[4][4];
     double rotationMatrix[3][3];
