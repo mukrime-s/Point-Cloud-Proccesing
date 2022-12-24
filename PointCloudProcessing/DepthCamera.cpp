@@ -25,7 +25,7 @@ PointCloud DepthCamera::capture()
 	Point P;
 	PointCloud PC;
 	double corNumber;
-
+	int size;
 
 	dataFile.open(fileName, std::ifstream::in);
 	if (!dataFile) {
@@ -33,6 +33,8 @@ PointCloud DepthCamera::capture()
 	}
 	else
 	{
+		dataFile >> size;
+		PC.setPointNumber(size);
 		while (!dataFile.eof())
 		{
 			dataFile >> corNumber;
@@ -59,7 +61,7 @@ PointCloud DepthCamera::capture()
 			if (corNumber != (int)corNumber) {
 				PC.setPoint(counter, P);
 				counter++;
-				PC.setPointNumber(counter + 1);
+				/*PC.setPointNumber(counter + 1);*/
 			}
 		}
 

@@ -61,26 +61,51 @@ double* Transform::getTrans() {
 }
 
 
-void Transform::setRotation() {
+//void Transform::setRotation(double* array) {
+//	// Proje dökümanında verilen rotasyon matrisinin açılarıyla beraber bulunduğu, işlemlerin yapılıp matris olarak oluşturulduğu fonksiyon.
+//	rotationMatrix[0][0] = cos(angles[2]) * cos(angles[1]);
+//	rotationMatrix[0][1] = (cos(angles[2]) * sin(angles[1]) * sin(angles[0])) - (sin(angles[2]) * cos(angles[0]));
+//	rotationMatrix[0][2] = (cos(angles[2]) * sin(angles[1]) * cos(angles[0])) + (sin(angles[2]) * sin(angles[0]));
+//
+//	rotationMatrix[1][0] = sin(angles[2]) * cos(angles[1]);
+//	rotationMatrix[1][1] = (sin(angles[2]) * sin(angles[1]) * sin(angles[0])) + (cos(angles[2]) * cos(angles[0]));
+//	rotationMatrix[1][2] = (sin(angles[2]) * sin(angles[1]) * cos(angles[0])) - (cos(angles[2]) * sin(angles[0]));
+//
+//	rotationMatrix[2][0] = -sin(angles[1]);
+//	rotationMatrix[2][1] = cos(angles[1]) * sin(angles[0]);
+//	rotationMatrix[2][2] = cos(angles[1]) * cos(angles[0]);
+//}
+
+
+void Transform::setRotation(double array[]) {
 	// Proje dökümanında verilen rotasyon matrisinin açılarıyla beraber bulunduğu, işlemlerin yapılıp matris olarak oluşturulduğu fonksiyon.
-	rotationMatrix[0][0] = cos(angles[2]) * cos(angles[1]);
-	rotationMatrix[0][1] = (cos(angles[2]) * sin(angles[1]) * sin(angles[0])) - (sin(angles[2]) * cos(angles[0]));
-	rotationMatrix[0][2] = (cos(angles[2]) * sin(angles[1]) * cos(angles[0])) + (sin(angles[2]) * sin(angles[0]));
+	rotationMatrix[0][0] = array[0];
+	rotationMatrix[0][1] = array[1];
+	rotationMatrix[0][2] = array[2];
 
-	rotationMatrix[1][0] = sin(angles[2]) * cos(angles[1]);
-	rotationMatrix[1][1] = (sin(angles[2]) * sin(angles[1]) * sin(angles[0])) + (cos(angles[2]) * cos(angles[0]));
-	rotationMatrix[1][2] = (sin(angles[2]) * sin(angles[1]) * cos(angles[0])) - (cos(angles[2]) * sin(angles[0]));
+	rotationMatrix[1][0] = array[3];
+	rotationMatrix[1][1] = array[4];
+	rotationMatrix[1][2] = array[5];
 
-	rotationMatrix[2][0] = -sin(angles[1]);
-	rotationMatrix[2][1] = cos(angles[1]) * sin(angles[0]);
-	rotationMatrix[2][2] = cos(angles[1]) * cos(angles[0]);
+	rotationMatrix[2][0] = array[6];
+	rotationMatrix[2][1] = array[7];
+	rotationMatrix[2][2] = array[8];
 }
 
 void Transform::setTranslation() {
 	// Öteleme(translation) için x, y ve z eksen bilgileri matris dönüşüm formülü gereğince transMatrix dizisinin belirtilen kısımlarında tutulur.
+	for (int j = 0; j < 3; j++) {
+		for (int i = 0; i < 3; i++) {
+			transMatrix[i][j] = rotationMatrix[i][j];
+		}
+	}
+
 	this->transMatrix[0][3] = this->trans[0];
 	this->transMatrix[1][3] = this->trans[1];
 	this->transMatrix[2][3] = this->trans[2];
+
+
+
 }
 
 
@@ -101,8 +126,10 @@ Point Transform::doTransform(Point p) {
 		returnArray[i] = 0;
 		for (int k = 0; k < 4; k++) {
 			returnArray[i] += this->transMatrix[i][k] * arr[k];
+
 		}
 	}
+
 
 	returnPoint.setX(returnArray[0]);
 	returnPoint.setY(returnArray[1]);
