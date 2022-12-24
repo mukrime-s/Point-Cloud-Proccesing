@@ -1,3 +1,9 @@
+/**
+* @file PointCloudRecorder.cpp
+* @Author Mukrime Sagiroglu ---->mkrimesagrglu@gmail.com
+* @date Aralik 2022
+* @brief PointCloud.h sýnýfý oluþturuldu.
+*/
 #pragma once
 #include <iostream>
 #include "PointCloud.h"
@@ -41,28 +47,28 @@ void PointCloud::setPoint(int index, Point point)  //point cloudun icindeki poin
 	this->points[index] = point;
 }
 
-const double PointCloud::getPointX(int index)
+const double PointCloud::getPointX(int index)const
 {
 	return this->points[index].getX();
 	
 }
 
-const double PointCloud::getPointY(int index)
+const double PointCloud::getPointY(int index)const
 {
 	return this->points[index].getY();
 }
 
-const double PointCloud::getPointZ(int index)
+const double PointCloud::getPointZ(int index)const
 {
 	return this->points[index].getZ();
 }
 
-Point PointCloud::getPoint(int index)//point cloudun icindeki pointleri point objesi kullanarak verilere erisen foksiyon olusturuldu.
+Point PointCloud::getPoint(int index)const//point cloudun icindeki pointleri point objesi kullanarak verilere erisen foksiyon olusturuldu.
 {
 	return this->points[index];
 }
 
-const int PointCloud::getPointNumber()
+const int PointCloud::getPointNumber()const
 {
 	return pointNumber;
 }
