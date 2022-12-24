@@ -53,10 +53,10 @@
     <ClCompile Include="ThreeDGridMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DepthCameraTest.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PointTest.cpp">
+    <ClCompile Include="DepthCameraTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

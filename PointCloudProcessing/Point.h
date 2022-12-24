@@ -6,6 +6,7 @@ private:
 public:
 	
 	Point();
+	Point(double,double,double);
 
 	void setX(double x);
 	double getX() const;
