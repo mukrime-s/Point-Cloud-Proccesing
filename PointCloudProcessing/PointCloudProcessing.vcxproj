@@ -148,13 +148,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthCamera.cpp" />
-    <ClCompile Include="DepthCameraTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointCloud.cpp" />
     <ClCompile Include="PointCloudRecorder.cpp" />
     <ClCompile Include="ThreeDGridMap.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="TransformTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

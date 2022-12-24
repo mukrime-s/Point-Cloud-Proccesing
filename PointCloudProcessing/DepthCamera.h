@@ -12,9 +12,9 @@ private:
 	string fileName;
 public:
 	int counter = 0;
-	
+
 	DepthCamera();
-	
+
 	void setfileName(string fileName);
 	string getfileName() const;
 
