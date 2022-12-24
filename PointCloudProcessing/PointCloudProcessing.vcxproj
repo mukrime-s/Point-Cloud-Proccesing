@@ -152,6 +152,7 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointCloud.cpp" />
     <ClCompile Include="PointCloudRecorder.cpp" />
+    <ClCompile Include="PointTest.cpp" />
     <ClCompile Include="ThreeDGridMap.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>

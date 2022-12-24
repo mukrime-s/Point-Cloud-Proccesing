@@ -8,25 +8,24 @@
 #include "Point.h"
 using namespace std;
 
-int main() {
-
-
-	DepthCamera dp;
-	PointCloud pc;
-	string dosyaAdi;
-
-	cout << "Bir dosya adi girin  = "<<endl;
-	cin >> dosyaAdi;
-	dp.setfileName(dosyaAdi);
-
-	cout << pc.getPointNumber()<<endl;
-	
-	pc = dp.capture();
-
-
-	cout << pc.getPointNumber();
-
-
-
-	return 0;
-}
+//int main() {
+//
+//
+//	DepthCamera dp;
+//	PointCloud pc;
+//	string dosyaAdi;
+//
+//	cout << "Bir dosya adi girin  = "<<endl;
+//	cin >> dosyaAdi;
+//	dp.setfileName(dosyaAdi);
+//
+//	cout << pc.getPointNumber()<<endl;
+//	
+//	pc = dp.capture();
+//
+//	cout << pc.getPointNumber();
+//
+//
+//
+//	return 0;
+//}
