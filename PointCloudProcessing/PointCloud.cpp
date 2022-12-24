@@ -31,7 +31,6 @@ void PointCloud::setPointZ(int index, double value)
 
 void PointCloud::setPointNumber(int number)
 {
-	delete[] this->points;
 	pointNumber = number;
 	this->points = new Point[pointNumber];
 }
@@ -81,7 +80,7 @@ const PointCloud PointCloud::operator+(const PointCloud& pointCloud)//iki nokta 
 	}
 
 	return sum;
-	
+
 }
 
 const PointCloud PointCloud::operator=(const PointCloud& pointCloud)//bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
@@ -100,9 +99,9 @@ const PointCloud PointCloud::operator=(const PointCloud& pointCloud)//bir nokta 
 
 PointCloud PointCloud::deleteMovePoint(int index)//secilen pointi listeden silmek ve silinen pointten sonraki degerleri bir öncekine tasiyan fonksiyon
 {
-	for (int i = 0; i < pointNumber; i++) { 
+	for (int i = 0; i < pointNumber; i++) {
 		if (i == index) {
-			while (i < pointNumber) { 
+			while (i < pointNumber) {
 				points[i] = points[i + 1];// secilen idexten sonraki indexler bir sola shift ettirilir. Böylece secilen deger listeden slinmis olur.
 				i++;
 			}
