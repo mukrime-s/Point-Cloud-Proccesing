@@ -13,12 +13,12 @@ class PointCloudRecorder
 #pragma once
 private:
 
-	string File;
+	string fileName;
 public:
 	
 	PointCloudRecorder();
 	void setFile(string& );
-	string getFile()const;
+	string getfileName()const;
 	bool Save(const PointCloud& pc)const;
 };
 
