@@ -1,11 +1,2 @@
-﻿  DepthCamera.cpp
-  main.cpp
-  Point.cpp
-  PointCloud.cpp
-  PointCloudRecorder.cpp
-  Transform.cpp
-  TransformTest.cpp
-  Kod Üretiliyor...
-C:\RepoOop\Point-Cloud-Proccesing\PointCloudProcessing\DepthCamera.cpp(71): warning C4715: 'DepthCamera::capture': tüm denetim yolları değer döndürmez
-  LINK : C:\RepoOop\Point-Cloud-Proccesing\Debug\PointCloudProcessing.exe bulunamadı veya son artımlı bağlantı tarafından oluşturulmadı; tam bağlantı gerçekleştiriliyor
+﻿  ThreeDGridMap.cpp
   PointCloudProcessing.vcxproj -> C:\RepoOop\Point-Cloud-Proccesing\Debug\PointCloudProcessing.exe
