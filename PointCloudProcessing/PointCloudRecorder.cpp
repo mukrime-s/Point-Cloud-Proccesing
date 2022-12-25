@@ -19,16 +19,16 @@ PointCloudRecorder::PointCloudRecorder()
 /**
 * @brief setFile fonksiyonu, PointCloudRecorder sýnýfýnýn fileName özelliðine bir dosya adý atamasý yapar. Bu fonksiyon, kullanýcýnýn belirttiði bir dosya adýný alýr ve fileName özelliðine atar.
 */
-void PointCloudRecorder::setFile(string& File)
+void PointCloudRecorder::setFile(string& fileName)
 {
-	this->File = File;
+	this->fileName = fileName;
 }
 /**
 * @brief getFile fonksiyonu dosya ismini döndürür.
 */
-string PointCloudRecorder::getFile()const
+string PointCloudRecorder::getfileName()const
 {
-	return File;
+	return fileName;
 }
 /**
 * @brief nokta bulutunu  dosyaya kaydeden fonksiyon olusturuldu.
@@ -36,7 +36,7 @@ string PointCloudRecorder::getFile()const
 bool PointCloudRecorder::Save(const PointCloud& pc)const
 {
 	bool success = false;
-	ofstream outputFile(File);
+	ofstream outputFile(fileName);
 	if (outputFile.is_open()) {
 		for (int i = 0; i < pc.getPointNumber(); ++i) {
 			outputFile << pc.getPointX(i) << "\t" << pc.getPointY(i) << "\t" << pc.getPointZ(i) << "\n";
