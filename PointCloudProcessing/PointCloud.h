@@ -7,11 +7,12 @@
 #pragma once
 #include "Point.h"
 using namespace std;
-class PointCloud:public Point
+#include <list>
+#include <string>
+class PointCloud
 {
 private:
-	Point* points;
-	int pointNumber;
+	list <Point> points;
 public:
 	PointCloud();
 	~PointCloud();
@@ -28,8 +29,8 @@ public:
 	double getPointZ(int)const;
 	Point getPoint(int)const;////point cloudun icindeki pointleri point objesi kullanarak objeye erisen foksiyon olusturuldu.
 	int getPointNumber()const;//pointNumberi döndürür.
-	const PointCloud operator+(const PointCloud&); //iki nokta bulutunun sahip olduðu noktalara sahip tek bir nokta bulutunu döndürür.
-	const PointCloud operator=(const PointCloud&); //bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
+	const PointCloud operator+(PointCloud&); //iki nokta bulutunun sahip olduðu noktalara sahip tek bir nokta bulutunu döndürür.
+	const PointCloud operator=(PointCloud&); //bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
 
 	PointCloud deleteMovePoint(int);//secilen pointi listeden siler ve silinen pointten sonraki degerleri bir öncekine tasir.
 

@@ -7,121 +7,123 @@
 #pragma once
 #include <iostream>
 #include "PointCloud.h"
-
+/**
+* @brief Constructor fonksiyonu olusturuldu
+*/
 PointCloud::PointCloud()
 {
-	this->pointNumber = 1;
-	this->points = new Point[this->pointNumber];
-}
 
-PointCloud::~PointCloud()
-{
 }
 
 PointCloud::PointCloud(int number)
 {
-	
-	pointNumber = number;
-	this->points = new Point[pointNumber];
+
 }
 
+/**
+* @brief Destructor fonksiyonu olusturuldu
+*/
+PointCloud::~PointCloud()
+{
+}
+/**
+* @brief set fonsiyonlari olusturuldu.
+*/
 void PointCloud::setPointX(int index, double value)
 {
-	this->points[index].setX(value);
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	iter->getX();
 }
 
 void PointCloud::setPointY(int index, double value)
 {
-	this->points[index].setY(value);
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	iter->getY();
 }
 
 void PointCloud::setPointZ(int index, double value)
 {
-	this->points[index].setZ(value);
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	iter->getZ();
 }
 
 void PointCloud::setPointNumber(int number)
 {
-	pointNumber = number;
-	this->points = new Point[pointNumber];
+	list<Point>::iterator iter = next(this->points.begin(), iter);
+	iter->setX(value);
 }
-
-void PointCloud::setPoint(int index, Point point)  //point cloudun icindeki pointleri point objesi kullanarak setleyen foksiyon olusturuldu.
+/**
+* @brief point cloudun icindeki pointleri point objesi kullanarak setleyen foksiyon olusturuldu.
+*/
+void PointCloud::setPoint(int index, Point point)
 {
-	this->points[index] = point;
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	*iter = point;
 }
 
 double PointCloud::getPointX(int index)const
 {
-	return this->points[index].getX();
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	return iter->getX();
 	
 }
 
 double PointCloud::getPointY(int index)const
 {
-	return this->points[index].getY();
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	return iter->getY();
 }
 
 double PointCloud::getPointZ(int index)const
 {
-	return this->points[index].getZ();
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	return iter->getZ();
 }
-
-Point PointCloud::getPoint(int index)const//point cloudun icindeki pointleri point objesi kullanarak verilere erisen foksiyon olusturuldu.
+/**
+* @brief point cloudun icindeki pointleri point objesi kullanarak verilere erisen foksiyon olusturuldu.
+*/
+Point PointCloud::getPoint(int index)const
 {
-	return this->points[index];
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	return * iter;
 }
 
 int PointCloud::getPointNumber()const
 {
-	return pointNumber;
+	return this->points.size();
 }
-
-const PointCloud PointCloud::operator+(const PointCloud& pointCloud)//iki nokta bulutunun sahip olduðu noktalara sahip tek bir nokta bulutunu döndürür.
+/**
+* @brief + operator fonsiyonu iki nokta bulutunun sahip olduðu noktalara sahip tek bir nokta bulutunu döndürür
+*/
+const PointCloud PointCloud::operator+(PointCloud& pointCloud)
 {
-	int size = pointNumber + pointCloud.pointNumber;
-	int count = 0;
-	PointCloud sum(size);
-
-	for (int m = 0; m < pointNumber; m++) {
-		sum.points[m] = this->points[m];
+	PointCloud sum;
+	list <Point>::iterator iter = this->points.begin();
+	for (iter; iter != this->points.end(); iter++) {
+		sum.points.push_back(*iter);
 	}
-	for (int s = pointNumber; s < size; s++) {
-		sum.points[s] = pointCloud.points[count];
-		count++;
+	iter = pointCloud.points.begin();
+	for (iter; iter != pointCloud.points.end(); iter++) {
+		sum.points.push_back(*iter);
 	}
-
 	return sum;
-
 }
-
-const PointCloud PointCloud::operator=(const PointCloud& pointCloud)//bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
+/**
+* @brief = operator fonsiyonu bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
+*/
+const PointCloud PointCloud::operator=(PointCloud& pointCloud)/
 {
-	delete[] this->points;
-	pointNumber = pointCloud.pointNumber;
-	this->points = new Point[pointNumber];
-
-	for (int m = 0; m < pointNumber; m++) {
-		this->points[m] = pointCloud.points[m];
-	}
-
-	return *this;
-
+	
+	this->points = pointCloud.points;
 }
+/**
+* @brief deleteMovePoint fonsiyonu secilen pointi listeden silmek ve silinen pointten sonraki degerleri bir öncekine tasiyan fonksiyondur.
+*/
 
-PointCloud PointCloud::deleteMovePoint(int index)//secilen pointi listeden silmek ve silinen pointten sonraki degerleri bir öncekine tasiyan fonksiyon
+PointCloud PointCloud::deleteMovePoint(int index)
 {
-	for (int i = 0; i < pointNumber; i++) {
-		if (i == index) {
-			while (i < pointNumber) {
-				points[i] = points[i + 1];// secilen idexten sonraki indexler bir sola shift ettirilir. Böylece secilen deger listeden slinmis olur.
-				i++;
-			}
-			pointNumber = pointNumber - 1; //listeden bir deger cýkarýldýgý icin pointNumberden de eksiltilir.
-			break;
-		}
-	}
-
+	list<Point>::iterator iter = next(this->points.begin(), index);
+	this->points.erase(iter);
 	return *this;
 }
 
