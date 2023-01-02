@@ -14,6 +14,10 @@ PointCloud::PointCloud()
 	this->points = new Point[this->pointNumber];
 }
 
+PointCloud::~PointCloud()
+{
+}
+
 PointCloud::PointCloud(int number)
 {
 	
@@ -47,18 +51,18 @@ void PointCloud::setPoint(int index, Point point)  //point cloudun icindeki poin
 	this->points[index] = point;
 }
 
-const double PointCloud::getPointX(int index)const
+double PointCloud::getPointX(int index)const
 {
 	return this->points[index].getX();
 	
 }
 
-const double PointCloud::getPointY(int index)const
+double PointCloud::getPointY(int index)const
 {
 	return this->points[index].getY();
 }
 
-const double PointCloud::getPointZ(int index)const
+double PointCloud::getPointZ(int index)const
 {
 	return this->points[index].getZ();
 }
@@ -68,7 +72,7 @@ Point PointCloud::getPoint(int index)const//point cloudun icindeki pointleri poi
 	return this->points[index];
 }
 
-const int PointCloud::getPointNumber()const
+int PointCloud::getPointNumber()const
 {
 	return pointNumber;
 }

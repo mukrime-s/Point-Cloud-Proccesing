@@ -1,9 +1,10 @@
 #include <iostream>
 #include"PointCloud.h"
 #include"Point.h"
+#include"Map.h"
 
 using namespace std;
-class ThreeDGridMap
+class ThreeDGridMap:public Map
 {
 private:
 	
