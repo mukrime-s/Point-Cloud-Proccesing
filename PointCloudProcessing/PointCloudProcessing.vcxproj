@@ -140,8 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DepthCamera.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapperInterface.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="PointCloud.h" />
+    <ClInclude Include="PointCloudGenerator.h" />
     <ClInclude Include="PointCloudRecorder.h" />
     <ClInclude Include="ThreeDGridMap.h" />
     <ClInclude Include="Transform.h" />
@@ -149,8 +152,11 @@
   <ItemGroup>
     <ClCompile Include="DepthCamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapperInterface.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointCloud.cpp" />
+    <ClCompile Include="PointCloudGenerator.cpp" />
     <ClCompile Include="PointCloudRecorder.cpp" />
     <ClCompile Include="ThreeDGridMap.cpp" />
     <ClCompile Include="Transform.cpp" />
