@@ -4,6 +4,7 @@
 #include "PointCloudGenerator.h"
 #include "PointCloudRecorder.h"
 #include "Map.h"
+#include <list>
 class MapperInterface
 {
 private:
@@ -13,6 +14,8 @@ private:
 	PointCloudRecorder* recorder;
 	Map* map;
 public:
+	MapperInterface();
+	~MapperInterface();
 	void addGenerator(PointCloudGenerator* generator);
 	void setRecorder(PointCloudRecorder* newRecorder);
 	bool generate();

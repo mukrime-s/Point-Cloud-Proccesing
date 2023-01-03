@@ -33,13 +33,13 @@ string PointCloudRecorder::getfileName()const
 /**
 * @brief nokta bulutunu  dosyaya kaydeden fonksiyon olusturuldu.
 */
-bool PointCloudRecorder::Save(const PointCloud& pc)const
+bool PointCloudRecorder::Save(PointCloud& pcl)const
 {
 	bool success = false;
 	ofstream outputFile(fileName);
 	if (outputFile.is_open()) {
-		for (int i = 0; i < pc.getPointNumber(); ++i) {
-			outputFile << pc.getPointX(i) << "\t" << pc.getPointY(i) << "\t" << pc.getPointZ(i) << "\n";
+		for (int i = 0; i < pcl.getPointNumber(); ++i) {
+			outputFile << pcl.getPointX(i) << "\t" << pcl.getPointY(i) << "\t" << pcl.getPointZ(i) << "\n";
 		}
 		success = true;
 	}
