@@ -19,6 +19,6 @@ public:
 	PointCloudRecorder();
 	void setFile(string& );
 	string getfileName()const;
-	bool Save(const PointCloud& pc)const;
+	bool Save(PointCloud& pcl)const;
 };
 
