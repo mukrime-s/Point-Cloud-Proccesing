@@ -14,9 +14,9 @@ public:
     ~Map();
     void getPointClouds(vector<PointCloud> pointClouds);
     void setPointClouds(vector<PointCloud> pointClouds);
-    virtual void insertPointCloud(PointCloud& pc);
-    virtual void insertPoint(Point& p);
-    bool loadMap(string fileName);
-    bool saveMap(string fileName);
+    virtual void insertPointCloud(PointCloud& pc) ;
+    virtual void insertPoint(Point& p) ;
+    bool loadMap(string fileName)  ;
+    bool saveMap(string fileName) ;
 };
 
