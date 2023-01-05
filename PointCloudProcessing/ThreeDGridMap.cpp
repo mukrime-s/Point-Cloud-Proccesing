@@ -6,13 +6,43 @@ using namespace std;
 
 
 ThreeDGridMap::ThreeDGridMap(int depth, double gridSize) : depth(depth), gridSize(gridSize) {
-    for (int x = 0; x < depth; x++) {
-        for (int y = 0; y < depth; y++) {
-            for (int z = 0; z < depth; z++) {
-                map[x][y][z] = false;
+
+
+    for (int i = 0; i < depth; i++) {
+
+        // Allocate memory blocks for
+        // rows of each 2D array
+        map[i] = new bool* [depth];
+
+        for (int j = 0; j < depth; j++) {
+
+            // Allocate memory blocks for
+            // columns of each 2D array
+            map[i][j] = new bool[depth];
+        }
+    }
+    for (int i = 0; i < depth; i++) {
+        for (int j = 0; j < depth; j++) {
+            for (int k = 0; k < depth; k++) {
+
+                // Assign values to the
+                // memory blocks created
+                map[i][j][k] = false;
             }
         }
     }
+}
+
+ThreeDGridMap::~ThreeDGridMap() {
+
+    for (int i = 0; i < depth; i++) {
+        for (int j = 0; j < depth; j++) {
+            delete[] map[i][j];
+        }
+        delete[] map[i];
+    }
+    delete[] map;
+
 }
 
 //Set get fonksiyonlarý
@@ -48,46 +78,73 @@ double ThreeDGridMap::getGridSize() const
 * @brief insertPointCloud fonksiyonu bir nokta bulutu objesini haritaya eklemek icin kullanildi
 */
 
-void ThreeDGridMap::insertPointCloud(list<Point>* pc) {
-    for (list<Point>::iterator i = pc->begin(); i != pc->end(); i++) {
-        insertPoint(*i);
-    }
+void ThreeDGridMap::insertPointCloud(list<Point> pc) {
+    
+    
+
 }
 /**
 * @brief insertPoint fonksiyonu bir nokta bulutu objesini haritaya eklemek icin kullanildi
 */
-void ThreeDGridMap::insertPoint(Point& p) {
+void ThreeDGridMap::insertPoint(list <Point> p ) {
+    
+    
     // Noktanýn hangi küpte olduðunu hesapla
-    int x = p.getX();
-    int y = p.getY();
-    int z = p.getZ();
-    this->map[x][y][z] = true;//alýnan koordinatlar haritada true olarak isaretlenir.
+    
+    for (list<Point>::iterator i = p.begin(); i != p.end(); i++) {
+      
+        counter++;
+        int x = i->getX() / gridSize;
+
+        x += 300;
+        int y = i->getY() / gridSize;
+
+        y += 300;
+
+        int z = i->getZ() / gridSize;
+
+        z += 300;
+
+        if (map[x][y][z] == false) {
+            
+            this->map[x][y][z] = true;//alýnan koordinatlar haritada true olarak isaretlenir.
+            
+        }
+
+    }
+
 }
 /**
 * @brief getGrid fonksiyonu gridleri döndürür.
 */
 bool ThreeDGridMap::getGrid(int x, int y, int z) const
 {
-    return map[x][y][z];
+    return this->map[x][y][z];
 }
 /**
 * @brief loadMap fonksiyonu hartayi olusturur.
 */
 bool ThreeDGridMap::loadMap(const string& fileName) {
-    ifstream mapFile(fileName);
+    
+    ofstream mapFile(fileName);
     if (!mapFile) {
         cout << "Dosya acilamadi lütfen kontrol ediniz!! " << fileName << endl;
         return false;
     }
-    mapFile >> depth;//yaratilan dosyadan depth bilgisi alinir.
-    mapFile >> gridSize;//yaratilan dosyadan gridSize bilgisi alinir.
+    //mapFile  depth;//yaratilan dosyadan depth bilgisi alinir.
+    //mapFile >> gridSize;//yaratilan dosyadan gridSize bilgisi alinir.
+    
     for (int x = 0; x < depth; x++) {//okunan bilgilere göre harita olusturuldu.
         for (int y = 0; y < depth; y++) {
             for (int z = 0; z < depth; z++) {
-                mapFile >> map[x][y][z];
+                if (this->map[x][y][z] == true) {
+                    mapFile << x << " " << y << " " << z << endl;
+                }
+                               
             }
         }
     }
+
     mapFile.close();
     return true;
     
@@ -97,23 +154,11 @@ bool ThreeDGridMap::loadMap(const string& fileName) {
 */
 
 bool ThreeDGridMap::saveMap(const string& fileName) {
-    ofstream mapFile(fileName);
-    if (!mapFile) {
-        cout << "Dosya acilamadi lütfen kontrol ediniz!! " << fileName << endl;
-        return false;
-    }
-    mapFile << depth << " " << gridSize << endl;
-    for (int x = 0; x < depth; x++) {//dosyayi kaydetme islemi
-        for (int y = 0; y < depth; y++) {
-            for (int z = 0; z < depth; z++) {
-                mapFile << map[x][y][z] << " ";
-            }
-            mapFile << endl;
-        }
-        mapFile << endl;
-    }
 
+    ofstream mapFile(fileName);
     mapFile.close();
+ 
+    
     return true;
 }
 

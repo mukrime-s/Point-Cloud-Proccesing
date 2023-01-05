@@ -13,12 +13,12 @@ MapperInterface::~MapperInterface()
 }
 void MapperInterface::addGenerator(PointCloudGenerator* generator)
 {
-	generators.push_back(generator);
+	this->generators.push_back(generator);
 }
 
 void MapperInterface::setRecorder(PointCloudRecorder* newRecorder)
 {
-	recorder = newRecorder;
+	this->recorder = newRecorder;
 }
 /**
 * @brief generators üyesinde bulunan tüm nesnelerden captureFor fonksiyonu çağrılarak nokta bulutları sağlanır.
@@ -53,10 +53,10 @@ bool MapperInterface::recordMap()
 * @brief recordMap fonksiyonu haritayı dosyaya kaydeden fonksiyondur.
 */
 
-bool MapperInterface::recordMap()
-{
-	return map->saveMap();
-}
+//bool MapperInterface::recordMap()
+//{
+//	return map->saveMap();
+//}
 
 
 /**

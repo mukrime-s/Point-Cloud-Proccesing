@@ -6,14 +6,14 @@
 #include "DepthCamera.h"
 #include "PointCloud.h"
 #include "Point.h"
+#include "ThreeDGridMap.h"
 using namespace std;
 
 int main() {
 
-
-	DepthCamera dp;
-	PointCloud pc;
-	string dosyaAdi;
+	cout << "Islem Baslatildi..." << endl;
+	DepthCamera dp,dp2,dp3,dp4;
+	PointCloud pc,pc2,pc3,pc4;
 
 
 	list<Point>::iterator iter;
@@ -22,72 +22,48 @@ int main() {
 	list<Point> P3;
 	list<Point> P4;
 
-
-	cout << "Bir dosya adi girin  = " << endl;
-	cin >> dosyaAdi;
-	dp.setfileName(dosyaAdi);
-
-	//cout << pc.getPointNumber()<<endl;
+	dp.setfileName("cam.txt");
+	dp2.setfileName("cam1.txt");
+	dp3.setfileName("cam2.txt");
+	dp4.setfileName("cam3.txt");
 
 	pc = dp.captureFor();
+	pc2 = dp2.captureFor();
+	pc3 = dp3.captureFor();
+	pc4 = dp4.captureFor();
 
+
+	ThreeDGridMap *tgm = new ThreeDGridMap(1000, 0.03);
 	P1 = pc.getPoint();
+	tgm->insertPoint(P1);
+	tgm->loadMap("3DSONUC.txt");
+	delete tgm;
+	//tgm.~ThreeDGridMap();
+	
 
-	ofstream camsonuc("camsonuc1.txt");
-	ofstream cam1sonuc("cam1sonuc1.txt");
-	ofstream cam2sonuc("cam2sonuc2.txt");
-	ofstream cam3sonuc("cam3sonuc3.txt");
+	ThreeDGridMap* tgm1 = new ThreeDGridMap(1000, 0.03);
+	P2 = pc2.getPoint();
+	tgm1->insertPoint(P2);
+	tgm1->loadMap("3DSONUC1.txt");
+	delete tgm1;
+	//tgm1.~ThreeDGridMap();
 
-	while (dosyaAdi != "q") {
+	ThreeDGridMap* tgm2 = new ThreeDGridMap(1000, 0.03);
+	P3 = pc3.getPoint();
+	tgm2->insertPoint(P3);
+	tgm2->loadMap("3DSONUC2.txt");
+	delete tgm2;
+	//tgm2.~ThreeDGridMap();
 
+	ThreeDGridMap* tgm3 = new ThreeDGridMap(1000, 0.03);
 
+	P4 = pc4.getPoint();
+	tgm3->insertPoint(P4);
+	tgm3->loadMap("3DSONUC3.txt");
+	//tgm3.~ThreeDGridMap();
+	delete tgm3;
 
-		if (dosyaAdi == "cam.txt") {
-
-
-			for (iter = P1.begin(); iter != P1.end(); iter++)
-				camsonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
-		}
-		if (dosyaAdi == "cam1.txt") {
-
-
-			for (iter = P1.begin(); iter != P1.end(); iter++)
-				cam1sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
-		}
-		if (dosyaAdi == "cam2.txt") {
-
-
-			for (iter = P1.begin(); iter != P1.end(); iter++)
-				cam2sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
-		}
-		if (dosyaAdi == "cam3.txt") {
-
-
-			for (iter = P1.begin(); iter != P1.end(); iter++)
-				cam3sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
-		}
-
-		cout << "Bir dosya adi girin  = " << endl;
-		cin >> dosyaAdi;
-		dp.setfileName(dosyaAdi);
-
-
-		pc = dp.captureFor();
-
-		P1 = pc.getPoint();
-
-	}
-
-	cout << pc.getPointNumber();
-	P1 = pc.getPoint();
-
-	//for (iter = P1.begin(); iter != P1.end(); iter++)
-	//	cout << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
-
-	cam1sonuc.close();
-
-
-
+	cout << "Islem Tamamlandi..." << endl;
 
 	return 0;
 }
