@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Point.h"
-#include "Point.h"
 #include "PointCloud.h"
 #include <vector>
 using namespace std;
@@ -9,7 +8,7 @@ class Map
 {
 private:
     vector<PointCloud> pointClouds;
-
+    vector<Point> points;
 public:
     Map();
     ~Map();

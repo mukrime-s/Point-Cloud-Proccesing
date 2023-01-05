@@ -45,18 +45,18 @@ bool MapperInterface::recordPointCloud()
 		return true;
 	}
 }
+bool MapperInterface::recordMap()
+{
+	return false;
+}
 /**
 * @brief recordMap fonksiyonu haritayı dosyaya kaydeden fonksiyondur.
 */
 
-//bool MapperInterface::recordMap()
-//{
-//	PointCloudRecorder recorder;
-//	recorder.setFile("map.txt");
-//	PointCloud map;
-//	map.setPoint(pointClouds);
-//	return recorder.Save(map);//recorder.Save(map) fonksiyonu true değerini döndürürse true döner.
-//}
+bool MapperInterface::recordMap()
+{
+	return map->saveMap();
+}
 
 
 /**

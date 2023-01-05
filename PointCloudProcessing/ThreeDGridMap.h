@@ -19,9 +19,8 @@ public:
 	int getDepth() const;
 	void setGridSize(double gridSize);
 	double getGridSize() const;
-	void insertPointCloud(PointCloud& pc);
+	void insertPointCloud(list<Point>* pc);
 	void insertPoint(Point& p);
-
 	bool getGrid(int x, int y, int z) const;
 	bool loadMap(const string& fileName);
 	bool saveMap(const string& fileName);
