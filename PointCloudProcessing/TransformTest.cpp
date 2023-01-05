@@ -53,6 +53,22 @@ int main() {
 		  0.0000003, -0.9999576, -0.0092033
 
 	};
+	double arrayt1[3] = {
+		1.95704, 1.93000, 1.05707
+	};
+	double arrayt2[3] = {
+		-1.91288, 1.94412, 1.05465
+	};
+	double arrayt3[3] = {
+		1.96978, -1.94622, 1.05264
+	};
+	double arrayt4[3] = {
+		-1.87445, -1.95027, 1.06432
+	};
+
+
+
+
 	//cam1 icin
 	pc1 = d1.capture();
 	t1.setRotation(array);
@@ -84,38 +100,31 @@ int main() {
 	pc3 = t3.doTransform(pc3);
 	pc4 = t4.doTransform(pc4);
 
+	list<Point>::iterator iter;
+	list<Point> P1;
+	list<Point> P2;
+	list<Point> P3;
+	list<Point> P4;
+
+	P1 = pc1.getPoint();
+	P2 = pc2.getPoint();
+	P3 = pc3.getPoint();
+	P4 = pc4.getPoint();
 
 
-	for (int i = 0; i < pc1.getPointNumber(); i++) {
-		cam1sonuc << pc1.getPointX(i) << " " << pc1.getPointY(i) << " " << pc1.getPointZ(i) << endl;
+	for (iter = P1.begin(); iter != P1.end(); iter++)
+		cam1sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
+
+	for (iter = P2.begin(); iter != P2.end(); iter++)
+		cam2sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
+
+	for (iter = P3.begin(); iter != P3.end(); iter++)
+		cam3sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
+	
+	for (iter = P4.begin(); iter != P4.end(); iter++)
+		cam4sonuc << iter->getX() << " " << iter->getY() << " " << iter->getZ() << endl;
 
 
-
-	}
-	cam1sonuc.close();
-
-	for (int i = 0; i < pc2.getPointNumber(); i++) {
-		cam2sonuc << pc2.getPointX(i) << " " << pc2.getPointY(i) << " " << pc2.getPointZ(i) << endl;
-
-
-
-	}
-	cam2sonuc.close();
-
-	for (int i = 0; i < pc3.getPointNumber(); i++) {
-		cam3sonuc << pc3.getPointX(i) << " " << pc3.getPointY(i) << " " << pc3.getPointZ(i) << endl;
-
-
-
-	}
-	cam3sonuc.close();
-
-	for (int i = 0; i < pc4.getPointNumber(); i++) {
-		cam4sonuc << pc4.getPointX(i) << " " << pc4.getPointY(i) << " " << pc4.getPointZ(i) << endl;
-
-
-
-	}
 	cam4sonuc.close();
 
 

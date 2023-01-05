@@ -16,6 +16,8 @@ using namespace std;
 PointCloud::PointCloud()
 {
 	pointNumber = 0;//varsayýlan atandi.
+
+
 }
 
 
@@ -54,16 +56,16 @@ void PointCloud::setPointNumber(int pointNumber)
 /**
 * @brief point cloudun icindeki pointleri point objesi kullanarak atayan foksiyon olusturuldu.
 */
-void PointCloud::setPoint(list<Point>* pc)
+void PointCloud::setPoint(list <Point> p)
 {
-	this->points = *pc;
+	this->points = p;
 }
 
 double PointCloud::getPointX(int index)
 {
 	list<Point>::iterator iter = next(this->points.begin(), index);
 	return iter->getX();
-	
+
 }
 
 double PointCloud::getPointY(int index)
@@ -120,13 +122,13 @@ PointCloud PointCloud::operator+(PointCloud pcl)
 /**
 * @brief = operator fonsiyonu bu fonksiyon "pcl" nesnesinin "points" listesi içindeki tüm öðeleri, "this" nesnesinin "points" listesine kopyalar.
 */
-void PointCloud::operator=(PointCloud *pcl)
+void PointCloud::operator=(PointCloud* pcl)
 {
-	
+
 	list<Point>::iterator iter;
-	for (iter = pcl->points.begin(); iter != pcl->points.end(); iter++)//listteki tüm ögeleri döndürür
+	for (iter = this->points.begin(); iter != this->points.end(); iter++)//listteki tüm ögeleri döndürür
 	{
-		this->points.push_back(*iter);//point listesinin sonuna iterde bulunan ögeyi ekler
+		pcl->points.push_back(*iter);//point listesinin sonuna iterde bulunan ögeyi ekler
 	}
 }
 /**

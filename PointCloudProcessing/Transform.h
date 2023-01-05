@@ -1,19 +1,19 @@
 #pragma once
 #include "PointCloud.h"
-
+#include<Eigen/Dense>
+#include <list>
 using namespace std;
 
 class Transform
 {
 private:
-    double rotation[9];
-    double angles[3];
-    double trans[3];
-    double transMatrix[4][4];
-    double rotationMatrix[3][3];
+    Eigen::Vector3d angles;
+    Eigen::Vector3d trans;
+    Eigen::Matrix4d transMatrix;
 public:
 
     Transform();
+    ~Transform();
     void setAngles(double, double, double);
     void setTrans(double, double, double);
 
@@ -21,8 +21,10 @@ public:
     double* getTrans();
 
     void setRotation(double[]);
+    void setRotation(Eigen::Vector3d);
     void setTranslation();
+    void setTranslation(Eigen::Vector3d);
 
-    Point doTransform(Point p);
+    list<Point> doTransform(list<Point> p);
     PointCloud doTransform(PointCloud pc);
 };

@@ -9,6 +9,7 @@
 using namespace std;
 #include <list>
 #include <string>
+#include <iterator>
 class PointCloud
 {
 private:
@@ -22,7 +23,7 @@ public:
 	void setPointY(int, double);
 	void setPointZ(int, double);
 	void setPointNumber(int); //point cloudun icindeki pointleri point objesi kullanarak setleyen foksiyon olusturuldu.
-	void setPoint(list<Point>* pc); // point classýndaki indexi pointin indexine esitler.
+	void setPoint(list <Point>); // point classýndaki indexi pointin indexine esitler.
 	//Point sýnýfýndan getPoint fonksiyonlarý alýndý sabit kalmasý için const kullanýldý.
 	double getPointX(int);
 	double getPointY(int);
@@ -30,7 +31,7 @@ public:
 	list<Point> getPoint()const;////point cloudun icindeki pointleri point objesi kullanarak objeye erisen foksiyon olusturuldu.
 	int getPointNumber()const;//pointNumberi döndürür.
 	PointCloud operator+(PointCloud); //iki nokta bulutunun sahip olduðu noktalara sahip tek bir nokta bulutunu döndürür.
-	void operator=(PointCloud *pcl); //bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
+	void operator=(PointCloud* pcl); //bir nokta bulutunun baþka bir nokta bulutuna kopyalanmasýný saðlar.
 
 	PointCloud deleteMovePoint(int);//secilen pointi listeden siler ve silinen pointten sonraki degerleri bir öncekine tasir.
 
